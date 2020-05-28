@@ -126,8 +126,8 @@ struct HLSL_INTRINSIC {
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interfaces.
-struct __declspec(uuid("f0d4da3f-f863-4660-b8b4-dfd94ded6215"))
-IDxcIntrinsicTable : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcIntrinsicTable, f0d4da3f, f863, 4660, b8,b4, df,d9,4d,ed,62,15)
+ : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE GetTableName(_Outptr_ LPCSTR *pTableName) = 0;
@@ -138,7 +138,7 @@ public:
 
   // Get the lowering strategy for an hlsl extension intrinsic.
   virtual HRESULT STDMETHODCALLTYPE GetLoweringStrategy(UINT opcode, LPCSTR *pStrategy) = 0;
-  
+
   // Callback to support custom naming of hlsl extension intrinsic functions in dxil.
   // Return the empty string to get the default intrinsic name, which is the mangled
   // name of the high level intrinsic function.
@@ -153,15 +153,15 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetDxilOpCode(UINT opcode, UINT *pDxilOpcode) = 0;
 };
 
-struct __declspec(uuid("1d063e4f-515a-4d57-a12a-431f6a44cfb9"))
-IDxcSemanticDefineValidator : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcSemanticDefineValidator, 1d063e4f, 515a, 4d57, a1,2a, 43,1f,6a,44,cf,b9)
+ : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE GetSemanticDefineWarningsAndErrors(LPCSTR pName, LPCSTR pValue, IDxcBlobEncoding **ppWarningBlob, IDxcBlobEncoding **ppErrorBlob) = 0;
 };
 
-struct __declspec(uuid("282a56b4-3f56-4360-98c7-9ea04a752272"))
-IDxcLangExtensions : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcLangExtensions, 282a56b4, 3f56, 4360, 98,c7, 9e,a0,4a,75,22,72)
+ : public IUnknown
 {
 public:
   /// <summary>
@@ -181,19 +181,18 @@ public:
   virtual HRESULT STDMETHODCALLTYPE SetSemanticDefineValidator(_In_ IDxcSemanticDefineValidator* pValidator) = 0;
   /// <summary>Sets the name for the root metadata node used in DXIL to hold the semantic defines.</summary>
   virtual HRESULT STDMETHODCALLTYPE SetSemanticDefineMetaDataName(LPCSTR name) = 0;
-
-  DECLARE_CROSS_PLATFORM_UUIDOF(IDxcLangExtensions)
 };
 
-struct __declspec(uuid("2490C368-89EE-4491-A4B2-C6547B6C9381"))
-IDxcLangExtensions2 : public IDxcLangExtensions {
+
+INTERFACE_STRUCT_HEADER(IDxcLangExtensions2, 2490C368, 89EE, 4491, A4,B2, C6,54,7B,6C,93,81)
+ : public IDxcLangExtensions
+{
 public:
   virtual HRESULT STDMETHODCALLTYPE SetTargetTriple(LPCSTR name) = 0;
-  DECLARE_CROSS_PLATFORM_UUIDOF(IDxcLangExtensions2)
 };
 
-struct __declspec(uuid("454b764f-3549-475b-958c-a7a6fcd05fbc"))
-IDxcSystemAccess : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcSystemAccess, 454b764f, 3549, 475b, 95,8c, a7,a6,fc,d0,5f,bc)
+ : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE EnumFiles(LPCWSTR fileName, IEnumSTATSTG** pResult) = 0;
@@ -237,15 +236,15 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetStreamDisplay(_COM_Outptr_result_maybenull_ ITextFont** textFont, _Out_ unsigned* columnCount) = 0;
 };
 
-struct __declspec(uuid("e991ca8d-2045-413c-a8b8-788b2c06e14d"))
-IDxcContainerEventsHandler : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcContainerEventsHandler, e991ca8d, 2045, 413c, a8,b8, 78,8b,2c,06,e1,4d)
+ : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE OnDxilContainerBuilt(_In_ IDxcBlob *pSource, _Out_ IDxcBlob **ppTarget) = 0;
 };
 
-struct __declspec(uuid("0cfc5058-342b-4ff2-83f7-04c12aad3d01"))
-IDxcContainerEvent : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcContainerEvent, 0cfc5058, 342b, 4ff2, 83,f7, 04,c1,2a,ad,3d,01)
+ : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE RegisterDxilContainerEventHandler(IDxcContainerEventsHandler *pHandler, UINT64 *pCookie) = 0;

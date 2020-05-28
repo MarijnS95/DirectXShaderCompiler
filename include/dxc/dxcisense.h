@@ -613,8 +613,8 @@ struct IDxcCodeCompleteResults;
 struct IDxcCompletionResult;
 struct IDxcCompletionString;
 
-struct __declspec(uuid("1467b985-288d-4d2a-80c1-ef89c42c40bc"))
-IDxcCursor : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcCursor, 1467b985, 288d, 4d2a, 80, c1, ef,89,c4,2c,40,bc)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetExtent(_Outptr_result_nullonfailure_ IDxcSourceRange** pRange) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetLocation(_Outptr_result_nullonfailure_ IDxcSourceLocation** pResult) = 0;
@@ -652,8 +652,8 @@ IDxcCursor : public IUnknown
   virtual HRESULT STDMETHODCALLTYPE GetSnappedChild(_In_ IDxcSourceLocation* location, _Outptr_result_maybenull_ IDxcCursor** pResult) = 0;
 };
 
-struct __declspec(uuid("4f76b234-3659-4d33-99b0-3b0db994b564"))
-IDxcDiagnostic : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcDiagnostic, 4f76b234, 3659, 4d33, 99, b0, 3b,0d,b9,94,b5,64)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE FormatDiagnostic(
     DxcDiagnosticDisplayOptions options,
@@ -669,8 +669,8 @@ IDxcDiagnostic : public IUnknown
     _Outptr_result_nullonfailure_ IDxcSourceRange** pReplacementRange, _Outptr_result_maybenull_ LPSTR* pText) = 0;
 };
 
-struct __declspec(uuid("bb2fca9e-1478-47ba-b08c-2c502ada4895"))
-IDxcFile : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcFile, bb2fca9e, 1478, 47ba, b0, 8c, 2c,50,2a,da,48,95)
+ : public IUnknown
 {
   /// <summary>Gets the file name for this file.</summary>
   virtual HRESULT STDMETHODCALLTYPE GetName(_Outptr_result_maybenull_ LPSTR* pResult) = 0;
@@ -678,16 +678,16 @@ IDxcFile : public IUnknown
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcFile* other, _Out_ BOOL* pResult) = 0;
 };
 
-struct __declspec(uuid("0c364d65-df44-4412-888e-4e552fc5e3d6"))
-IDxcInclusion : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcInclusion, 0c364d65, df44, 4412, 88, 8e, 4e,55,2f,c5,e3,d6)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetIncludedFile(_Outptr_result_nullonfailure_ IDxcFile** pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStackLength(_Out_ unsigned *pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStackItem(unsigned index, _Outptr_result_nullonfailure_ IDxcSourceLocation **pResult) = 0;
 };
 
-struct __declspec(uuid("b1f99513-46d6-4112-8169-dd0d6053f17d"))
-IDxcIntelliSense : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcIntelliSense, b1f99513, 46d6, 4112, 81, 69, dd,0d,60,53,f1,7d)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE CreateIndex(_Outptr_result_nullonfailure_ IDxcIndex** index) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetNullLocation(_Outptr_result_nullonfailure_ IDxcSourceLocation** location) = 0;
@@ -700,12 +700,10 @@ IDxcIntelliSense : public IUnknown
     _Out_ DxcDiagnosticDisplayOptions* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetDefaultEditingTUOptions(_Out_ DxcTranslationUnitFlags* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE CreateUnsavedFile(_In_ LPCSTR fileName, _In_ LPCSTR contents, unsigned contentLength, _Outptr_result_nullonfailure_ IDxcUnsavedFile** pResult) = 0;
-
-  DECLARE_CROSS_PLATFORM_UUIDOF(IDxcIntelliSense)
 };
 
-struct __declspec(uuid("937824a0-7f5a-4815-9ba7-7fc0424f4173"))
-IDxcIndex : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcIndex, 937824a0, 7f5a, 4815, 9b, a7, 7f,c0,42,4f,41,73)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE SetGlobalOptions(DxcGlobalOptions options) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetGlobalOptions(_Out_ DxcGlobalOptions* options) = 0;
@@ -719,8 +717,8 @@ IDxcIndex : public IUnknown
       _Out_ IDxcTranslationUnit** pTranslationUnit) = 0;
 };
 
-struct __declspec(uuid("8e7ddf1c-d7d3-4d69-b286-85fccba1e0cf"))
-IDxcSourceLocation : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcSourceLocation, 8e7ddf1c, d7d3, 4d69, b2, 86, 85,fc,cb,a1,e0,cf)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcSourceLocation* other, _Out_ BOOL* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetSpellingLocation(
@@ -735,8 +733,8 @@ IDxcSourceLocation : public IUnknown
     _Out_opt_ unsigned* pCol) = 0;
 };
 
-struct __declspec(uuid("f1359b36-a53f-4e81-b514-b6b84122a13f"))
-IDxcSourceRange : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcSourceRange, f1359b36, a53f, 4e81, b5, 14, b6,b8,41,22,a1,3f)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE IsNull(_Out_ BOOL* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStart(_Out_ IDxcSourceLocation** pValue) = 0;
@@ -744,8 +742,8 @@ IDxcSourceRange : public IUnknown
   virtual HRESULT STDMETHODCALLTYPE GetOffsets(_Out_ unsigned* startOffset, _Out_ unsigned* endOffset) = 0;
 };
 
-struct __declspec(uuid("7f90b9ff-a275-4932-97d8-3cfd234482a2"))
-IDxcToken : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcToken, 7f90b9ff, a275, 4932, 97, d8, 3c,fd,23,44,82,a2)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetKind(_Out_ DxcTokenKind* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetLocation(_Out_ IDxcSourceLocation** pValue) = 0;
@@ -753,8 +751,8 @@ IDxcToken : public IUnknown
   virtual HRESULT STDMETHODCALLTYPE GetSpelling(_Out_ LPSTR* pValue) = 0;
 };
 
-struct __declspec(uuid("9677dee0-c0e5-46a1-8b40-3db3168be63d"))
-IDxcTranslationUnit : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcTranslationUnit, 9677dee0, c0e5, 46a1, 8b, 40, 3d,b3,16,8b,e6,3d)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetCursor(_Out_ IDxcCursor** pCursor) = 0;
   virtual HRESULT STDMETHODCALLTYPE Tokenize(
@@ -791,16 +789,16 @@ IDxcTranslationUnit : public IUnknown
       _Outptr_result_nullonfailure_ IDxcCodeCompleteResults **pResult) = 0;
 };
 
-struct __declspec(uuid("2ec912fd-b144-4a15-ad0d-1c5439c81e46"))
-IDxcType : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcType, 2ec912fd, b144, 4a15, ad, 0d, 1c,54,39,c8,1e,46)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetSpelling(_Outptr_result_z_ LPSTR* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcType* other, _Out_ BOOL* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetKind(_Out_ DxcTypeKind* pResult) = 0;
 };
 
-struct __declspec(uuid("8ec00f98-07d0-4e60-9d7c-5a50b5b0017f"))
-IDxcUnsavedFile : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcUnsavedFile, 8ec00f98, 07d0, 4e60, 9d, 7c, 5a,50,b5,b0,01,7f)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetFileName(_Outptr_result_z_ LPSTR* pFileName) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetContents(_Outptr_result_z_ LPSTR* pContents) = 0;
@@ -808,22 +806,22 @@ IDxcUnsavedFile : public IUnknown
 };
 
 
-struct __declspec(uuid("1E06466A-FD8B-45F3-A78F-8A3F76EBB552"))
-IDxcCodeCompleteResults : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcCodeCompleteResults, 1E06466A, FD8B, 45F3, A7, 8F, 8A,3F,76,EB,B5,52)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetNumResults(_Out_ unsigned* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetResultAt(unsigned index, _Outptr_result_nullonfailure_ IDxcCompletionResult** pResult) = 0;
 };
 
-struct __declspec(uuid("943C0588-22D0-4784-86FC-701F802AC2B6"))
-IDxcCompletionResult : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcCompletionResult, 943C0588, 22D0, 4784, 86, FC, 70,1F,80,2A,C2,B6)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetCursorKind(_Out_ DxcCursorKind* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetCompletionString(_Outptr_result_nullonfailure_ IDxcCompletionString** pResult) = 0;
 };
 
-struct __declspec(uuid("06B51E0F-A605-4C69-A110-CD6E14B58EEC"))
-IDxcCompletionString : public IUnknown
+INTERFACE_STRUCT_HEADER(IDxcCompletionString, 06B51E0F, A605, 4C69, A1, 10, CD,6E,14,B5,8E,EC)
+ : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetNumCompletionChunks(_Out_ unsigned* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetCompletionChunkKind(unsigned chunkNumber, _Out_ DxcCompletionChunkKind* pResult) = 0;

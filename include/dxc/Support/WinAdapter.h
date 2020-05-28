@@ -476,15 +476,6 @@ inline bool IsEqualIID(REFIID riid1, REFIID riid2) {
   if (&riid1 == &riid2)
     return true;
 
-  // HACK: Many IIDs are currently initialized to {},
-  // which are obviously identical to eachother. Disallow
-  // this case, those are handled by reference compare only.
-  // This can be removed when all interfaces have a proper
-  // IID specified.
-  static constexpr IID empty = {};
-  if (IsEqualGUID(riid1, empty))
-    return false;
-
   return IsEqualGUID(riid1, riid2);
 }
 
@@ -572,28 +563,54 @@ enum tagSTATFLAG {
 
 // The following macros are defined to facilitate the lack of 'uuid' on Linux.
 
-#define DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(...)                               \
-public:                                                                        \
-  static REFIID uuidof() {                                                     \
+template <typename interface> inline GUID __emulated_uuidof();
+
+#define DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(interface_name, ...)               \
+  template <> inline IID __emulated_uuidof<interface_name>() {                 \
     static const IID _IID = __VA_ARGS__;                                       \
     return _IID;                                                               \
   }
 
-// TODO: This should be gone when all interfaces are converted
-#define DECLARE_CROSS_PLATFORM_UUIDOF(T)                                       \
-public:                                                                        \
-  static REFIID uuidof() {                                                     \
-    static const IID _IID = {};                                                \
-    return _IID;                                                               \
-  }
+// TODO: Move DECLARE_CROSS_PLATFORM_UUIDOF_VALUE into INTERFACE_STRUCT_HEADER
 
-#define __uuidof(T) T::uuidof()
+#define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
+                                uuid3_1, uuid3_2, uuid3_3, uuid3_4, uuid3_5,   \
+                                uuid3_6, uuid3_7)                              \
+  struct interface_name;                                                       \
+  DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(                                         \
+      interface_name, {0x##uuid0,                                              \
+                       0x##uuid1,                                              \
+                       0x##uuid2,                                              \
+                       {0x##uuid3_0, 0x##uuid3_1, 0x##uuid3_2, 0x##uuid3_3,    \
+                        0x##uuid3_4, 0x##uuid3_5, 0x##uuid3_6, 0x##uuid3_7}})  \
+  struct interface_name
+
+// TODO: We can also eat the open bracket and emit members containing the UUID.
+// Advantage:
+//    One can define subclasses on guid types, and __uuidof() still works
+//    normally on them (as __emulated_uuidof won't have a specialization for
+//    that type - or is that impossible in Windows too?)
+// Disadvantage:
+//    public/private inheritance has to run through the struct
+//
+// This seems like a cakewalk tradeoff IF __uuidof() works on non-guid
+// subtypes in Windows
+
+#define __uuidof(T) __emulated_uuidof<typename std::decay<T>::type>()
 
 #define IID_PPV_ARGS(ppType)                                                   \
-  (**(ppType)).uuidof(), reinterpret_cast<void **>(ppType)
+  __uuidof(decltype(**ppType)), reinterpret_cast<void **>(ppType)
 
 #else // __EMULATE_UUID
 
+#define INTERFACE_STRUCT_HEADER_str(x) #x
+
+#define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
+                                uuid3_1, uuid3_2, uuid3_3, uuid3_4, uuid3_5,   \
+                                uuid3_6, uuid3_7)                              \
+  struct __declspec(uuid(INTERFACE_STRUCT_HEADER_str(                          \
+      uuid0## - ##uuid1## - ##uuid2## - ##uuid3_0##uuid3_1## -                 \
+      ##uuid3_2##uuid3_3##uuid3_4##uuid3_5##uuid3_6##uuid3_7))) interface_name
 
 template <typename T> inline void **IID_PPV_ARGS_Helper(T **pp) {
   return reinterpret_cast<void **>(pp);
@@ -604,23 +621,8 @@ template <typename T> inline void **IID_PPV_ARGS_Helper(T **pp) {
 
 //===--------------------- COM Interfaces ---------------------------------===//
 
-#define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
-                                uuid3_1, uuid3_2, uuid3_3, uuid3_4, uuid3_5,   \
-                                uuid3_6, uuid3_7)                              \
-  struct __declspec(uuid(#uuid0 "-" #uuid1 "-" #uuid2 "-"                      \
-                                "-" #uuid3_0 #uuid3_1                          \
-                                "-" #uuid3_2 #uuid3_3 #uuid3_4 #uuid3_5,       \
-                         #uuid3_6, #uuid3_7)) interface_name {                 \
-    /* Note that eating the bracket here allows to keep the static function    \
-      and member inline, but will require an extra macro argument to pass      \
-      inherited types before it */                                             \
-    DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(                                       \
-        {0x##uuid0, 0x##uuid1, 0x##uuid2, 0x##uuid3_0, 0x##uuid3_1,            \
-         0x##uuid3_2, 0x##uuid3_3, 0x##uuid3_4, 0x##uuid3_5, 0x##uuid3_6,      \
-         0x##uuid3_7})
-
 INTERFACE_STRUCT_HEADER(IUnknown, 00000000, 0000, 0000, C0, 00, 00, 00, 00, 00,
-                        00, 46)
+                        00, 46) {
   IUnknown() : m_count(0){};
   virtual HRESULT QueryInterface(REFIID riid, void **ppvObject) = 0;
   virtual ULONG AddRef();
@@ -634,12 +636,12 @@ private:
   std::atomic<unsigned long> m_count;
 };
 
-struct __declspec(uuid("ECC8691B-C1DB-4DC0-855E-65F6C551AF49")) INoMarshal
-    : public IUnknown {
-  DECLARE_CROSS_PLATFORM_UUIDOF(INoMarshal)
-};
+INTERFACE_STRUCT_HEADER(INoMarshal, ECC8691B, C1DB, 4DC0, 85, 5E, 65, F6, C5,
+                        51, AF, 49)
+    : public IUnknown{};
 
-struct __declspec(uuid("00000002-0000-0000-C000-000000000046")) IMalloc
+INTERFACE_STRUCT_HEADER(IMalloc, 00000002, 0000, 0000, C0, 00, 00, 00, 00, 00,
+                        00, 46)
     : public IUnknown {
   virtual void *Alloc(size_t size);
   virtual void *Realloc(void *ptr, size_t size);
@@ -647,15 +649,15 @@ struct __declspec(uuid("00000002-0000-0000-C000-000000000046")) IMalloc
   virtual HRESULT QueryInterface(REFIID riid, void **ppvObject);
 };
 
-struct __declspec(uuid("0C733A30-2A1C-11CE-ADE5-00AA0044773D"))
-    ISequentialStream : public IUnknown {
+INTERFACE_STRUCT_HEADER(ISequentialStream, 0C733A30, 2A1C, 11CE, AD, E5, 00, AA,
+                        00, 44, 77, 3D)
+    : public IUnknown {
   virtual HRESULT Read(void *pv, ULONG cb, ULONG *pcbRead) = 0;
   virtual HRESULT Write(const void *pv, ULONG cb, ULONG *pcbWritten) = 0;
-
-  DECLARE_CROSS_PLATFORM_UUIDOF(ISequentialStream)
 };
 
-struct __declspec(uuid("0000000c-0000-0000-C000-000000000046")) IStream
+INTERFACE_STRUCT_HEADER(IStream, 0000000c, 0000, 0000, C0, 00, 00, 00, 00, 00,
+                        00, 46)
     : public ISequentialStream {
   virtual HRESULT Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin,
                        ULARGE_INTEGER *plibNewPosition) = 0;
@@ -677,8 +679,6 @@ struct __declspec(uuid("0000000c-0000-0000-C000-000000000046")) IStream
   virtual HRESULT Stat(STATSTG *pstatstg, DWORD grfStatFlag) = 0;
 
   virtual HRESULT Clone(IStream **ppstm) = 0;
-
-  DECLARE_CROSS_PLATFORM_UUIDOF(IStream)
 };
 
 //===--------------------- COM Pointer Types ------------------------------===//
