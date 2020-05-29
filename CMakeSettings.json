@@ -89,7 +89,8 @@
             "name": "-DCMAKE_SYSTEM_VERSION",
             "value": "10.0.14393.0"
           }
-        ]
+        ],
+        "inheritEnvironments": [ "msvc_x64_x64" ]
         },
         {
         "name": "x86-Debug",
@@ -179,7 +180,8 @@
             "name": "-DCMAKE_SYSTEM_VERSION",
             "value": "10.0.14393.0"
           }
-        ]
+        ],
+        "inheritEnvironments": [ "msvc_x86_x64" ]
         },
         {
         "name": "x86-Release",
@@ -269,7 +271,8 @@
             "name": "-DCMAKE_SYSTEM_VERSION",
             "value": "10.0.14393.0"
           }
-        ]
+        ],
+        "inheritEnvironments": [ "msvc_x86_x64" ]
         },
         {
         "name": "x64-Release",
@@ -359,7 +362,8 @@
             "name": "-DCMAKE_SYSTEM_VERSION",
             "value": "10.0.14393.0"
           }
-        ]
+        ],
+        "inheritEnvironments": [ "msvc_x64_x64" ]
         }
     ]
 }
