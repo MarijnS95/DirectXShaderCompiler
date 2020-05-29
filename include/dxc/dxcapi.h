@@ -129,6 +129,18 @@ typedef struct DxcShaderHash {
 #define DXC_ARG_DEBUG_NAME_FOR_SOURCE L"-Zss"
 #define DXC_ARG_DEBUG_NAME_FOR_BINARY L"-Zsb"
 
+#ifndef INTERFACE_STRUCT_HEADER
+// TODO: This is a copy from WinAdapter.h. Not a good idea!
+#define INTERFACE_STRUCT_HEADER_str(x) #x
+
+#define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
+                                uuid3_1, uuid3_2, uuid3_3, uuid3_4, uuid3_5,   \
+                                uuid3_6, uuid3_7)                              \
+  struct __declspec(uuid(INTERFACE_STRUCT_HEADER_str(                          \
+      uuid0## - ##uuid1## - ##uuid2## - ##uuid3_0##uuid3_1## -                 \
+      ##uuid3_2##uuid3_3##uuid3_4##uuid3_5##uuid3_6##uuid3_7))) interface_name
+#endif
+
 // IDxcBlob is an alias of ID3D10Blob and ID3DBlob
 INTERFACE_STRUCT_HEADER(IDxcBlob, 8BA5FB08, 5195, 40e2, AC, 58, 0D, 98, 9C, 3A,
                         01, 02)

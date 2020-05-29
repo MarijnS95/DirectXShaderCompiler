@@ -603,6 +603,8 @@ template <typename interface> inline GUID __emulated_uuidof();
 
 #else // __EMULATE_UUID
 
+// WARNING: This is also copied to dxcapi.h. What would be an appropriate header,
+// or should this be moved into its own {guid,interface}helper.h?
 #define INTERFACE_STRUCT_HEADER_str(x) #x
 
 #define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
