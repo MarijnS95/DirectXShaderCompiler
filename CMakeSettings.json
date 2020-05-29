@@ -3,7 +3,7 @@
     "configurations": [
         {
         "name": "x64-Debug",
-        "generator": "Visual Studio 15 2017 Win64",
+        "generator": "Visual Studio 16 2019 Win64",
         "configurationType" : "Debug",
         "buildRoot": "${projectDir}\\..\\hlsl.bin",
         "cmakeCommandArgs":  "",
@@ -93,7 +93,7 @@
         },
         {
         "name": "x86-Debug",
-        "generator": "Visual Studio 15 2017",
+        "generator": "Visual Studio 16 2019",
         "configurationType" : "Debug",
         "buildRoot": "${projectDir}\\..\\hlsl.bin.${name}",
         "cmakeCommandArgs":  "",
@@ -183,7 +183,7 @@
         },
         {
         "name": "x86-Release",
-        "generator": "Visual Studio 15 2017",
+        "generator": "Visual Studio 16 2019",
         "configurationType" : "Release",
         "buildRoot": "${projectDir}\\..\\hlsl.bin.${name}",
         "cmakeCommandArgs":  "",
@@ -273,7 +273,7 @@
         },
         {
         "name": "x64-Release",
-        "generator": "Visual Studio 15 2017 Win64",
+        "generator": "Visual Studio 16 2019 Win64",
         "configurationType" : "Release",
         "buildRoot": "${projectDir}\\..\\hlsl.bin.${name}",
         "cmakeCommandArgs":  "",
