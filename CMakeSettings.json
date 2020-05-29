@@ -14,97 +14,97 @@
           "type": "STRING"
         },
         {
-          "name": "CLANG_ENABLE_ARCMT:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_ARCMT",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_ENABLE_STATIC_ANALYZER:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_STATIC_ANALYZER",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "HLSL_INCLUDE_TESTS:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "HLSL_INCLUDE_TESTS",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_TARGETS_TO_BUILD:STRING",
+          "name": "LLVM_TARGETS_TO_BUILD",
           "value": "None",
           "type": "STRING"
         },
         {
-          "name": "LLVM_INCLUDE_DOCS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_DOCS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LIBCLANG_BUILD_STATIC:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LIBCLANG_BUILD_STATIC",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_OPTIMIZED_TABLEGEN:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_OPTIMIZED_TABLEGEN",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_REQUIRES_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_APPEND_VC_REV:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_APPEND_VC_REV",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_DEFAULT_TARGET_TRIPLE:STRING",
+          "name": "LLVM_DEFAULT_TARGET_TRIPLE",
           "value": "dxil-ms-dx",
           "type": "STRING"
         },
         {
-          "name": "CLANG_BUILD_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_BUILD_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DLLVM_REQUIRES_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "-DCLANG_CL:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_CL",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DCMAKE_SYSTEM_VERSION",
+          "name": "CMAKE_SYSTEM_VERSION",
           "value": "10.0.14393.0",
           "type": "STRING"
         }
@@ -125,97 +125,97 @@
           "type": "STRING"
         },
         {
-          "name": "CLANG_ENABLE_ARCMT:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_ARCMT",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_ENABLE_STATIC_ANALYZER:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_STATIC_ANALYZER",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "HLSL_INCLUDE_TESTS:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "HLSL_INCLUDE_TESTS",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_TARGETS_TO_BUILD:STRING",
+          "name": "LLVM_TARGETS_TO_BUILD",
           "value": "None",
           "type": "STRING"
         },
         {
-          "name": "LLVM_INCLUDE_DOCS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_DOCS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LIBCLANG_BUILD_STATIC:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LIBCLANG_BUILD_STATIC",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_OPTIMIZED_TABLEGEN:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_OPTIMIZED_TABLEGEN",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_REQUIRES_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_APPEND_VC_REV:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_APPEND_VC_REV",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_DEFAULT_TARGET_TRIPLE:STRING",
+          "name": "LLVM_DEFAULT_TARGET_TRIPLE",
           "value": "dxil-ms-dx",
           "type": "STRING"
         },
         {
-          "name": "CLANG_BUILD_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_BUILD_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DLLVM_REQUIRES_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "-DCLANG_CL:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_CL",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DCMAKE_SYSTEM_VERSION",
+          "name": "CMAKE_SYSTEM_VERSION",
           "value": "10.0.14393.0",
           "type": "STRING"
         }
@@ -236,97 +236,97 @@
           "type": "STRING"
         },
         {
-          "name": "CLANG_ENABLE_ARCMT:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_ARCMT",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_ENABLE_STATIC_ANALYZER:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_STATIC_ANALYZER",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "HLSL_INCLUDE_TESTS:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "HLSL_INCLUDE_TESTS",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_TARGETS_TO_BUILD:STRING",
+          "name": "LLVM_TARGETS_TO_BUILD",
           "value": "None",
           "type": "STRING"
         },
         {
-          "name": "LLVM_INCLUDE_DOCS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_DOCS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LIBCLANG_BUILD_STATIC:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LIBCLANG_BUILD_STATIC",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_OPTIMIZED_TABLEGEN:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_OPTIMIZED_TABLEGEN",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_REQUIRES_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_APPEND_VC_REV:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_APPEND_VC_REV",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_DEFAULT_TARGET_TRIPLE:STRING",
+          "name": "LLVM_DEFAULT_TARGET_TRIPLE",
           "value": "dxil-ms-dx",
           "type": "STRING"
         },
         {
-          "name": "CLANG_BUILD_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_BUILD_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DLLVM_REQUIRES_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "-DCLANG_CL:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_CL",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DCMAKE_SYSTEM_VERSION",
+          "name": "CMAKE_SYSTEM_VERSION",
           "value": "10.0.14393.0",
           "type": "STRING"
         }
@@ -347,97 +347,97 @@
           "type": "STRING"
         },
         {
-          "name": "CLANG_ENABLE_ARCMT:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_ARCMT",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_ENABLE_STATIC_ANALYZER:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_ENABLE_STATIC_ANALYZER",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "CLANG_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_TESTS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_TESTS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "HLSL_INCLUDE_TESTS:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "HLSL_INCLUDE_TESTS",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_TARGETS_TO_BUILD:STRING",
+          "name": "LLVM_TARGETS_TO_BUILD",
           "value": "None",
           "type": "STRING"
         },
         {
-          "name": "LLVM_INCLUDE_DOCS:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_DOCS",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_INCLUDE_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_INCLUDE_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LIBCLANG_BUILD_STATIC:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LIBCLANG_BUILD_STATIC",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_OPTIMIZED_TABLEGEN:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "LLVM_OPTIMIZED_TABLEGEN",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_REQUIRES_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_APPEND_VC_REV:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_APPEND_VC_REV",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_ENABLE_EH:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_ENABLE_EH",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "LLVM_DEFAULT_TARGET_TRIPLE:STRING",
+          "name": "LLVM_DEFAULT_TARGET_TRIPLE",
           "value": "dxil-ms-dx",
           "type": "STRING"
         },
         {
-          "name": "CLANG_BUILD_EXAMPLES:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_BUILD_EXAMPLES",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DLLVM_REQUIRES_RTTI:BOOL",
-          "value": "ON",
-          "type": "STRING"
+          "name": "LLVM_REQUIRES_RTTI",
+          "value": "True",
+          "type": "BOOL"
         },
         {
-          "name": "-DCLANG_CL:BOOL",
-          "value": "OFF",
-          "type": "STRING"
+          "name": "CLANG_CL",
+          "value": "False",
+          "type": "BOOL"
         },
         {
-          "name": "-DCMAKE_SYSTEM_VERSION",
+          "name": "CMAKE_SYSTEM_VERSION",
           "value": "10.0.14393.0",
           "type": "STRING"
         }
