@@ -54,15 +54,9 @@
 #define _countof(a) (sizeof(a) / sizeof(*(a)))
 
 // If it is GCC, there is no UUID support and we must emulate it.
-#ifdef __APPLE__
-#define __EMULATE_UUID 1
-#else // __APPLE__
-#ifdef __GNUC__
 #ifndef __clang__
 #define __EMULATE_UUID 1
-#endif // __GNUC__
 #endif // __clang__
-#endif // __APPLE__
 
 #ifdef __EMULATE_UUID
 #define __declspec(x)
