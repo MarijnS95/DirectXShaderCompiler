@@ -264,7 +264,7 @@ if( MSVC )
   if( MSVC11 )
     add_llvm_definitions(-D_VARIADIC_MAX=10)
   endif()
-  
+
   # Add definitions that make MSVC much less annoying.
   add_llvm_definitions(
     # For some reason MS wants to deprecate a bunch of standard functions...
@@ -343,7 +343,7 @@ if( MSVC )
   # Enable warnings
   if (LLVM_ENABLE_WARNINGS)
     append("/W4" msvc_warning_flags)
-    # CMake appends /W3 by default, and having /W3 followed by /W4 will result in 
+    # CMake appends /W3 by default, and having /W3 followed by /W4 will result in
     # cl : Command line warning D9025 : overriding '/W3' with '/W4'.  Since this is
     # a command line warning and not a compiler warning, it cannot be suppressed except
     # by fixing the command line.
@@ -534,7 +534,7 @@ endif()
 # HLSL Change Starts
 # Enable -fms-extensions for clang to use MS uuid extensions for COM.
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-  append("-fms-extensions -Wno-language-extension-token" CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
+  append("-Wno-language-extension-token" CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
 endif()
 # HLSL Change Ends
 

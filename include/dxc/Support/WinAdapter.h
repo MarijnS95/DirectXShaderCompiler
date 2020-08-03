@@ -57,9 +57,13 @@
   #define __has_declspec_attribute(x) 0
 #endif
 
-// If it is GCC, there is no UUID support and we must emulate it.
-#if !__has_declspec_attribute(uuid)
 #define __EMULATE_UUID 1
+
+// If it is GCC, there is no UUID support and we must emulate it.
+#if __has_declspec_attribute(uuid)
+// #error no emulate!
+#else
+// #error Emulate!
 #endif
 
 #ifdef __EMULATE_UUID
