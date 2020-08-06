@@ -559,24 +559,19 @@ enum tagSTATFLAG {
 
 template <typename interface> inline GUID __emulated_uuidof();
 
-#define DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(interface_name, ...)               \
-  template <> inline IID __emulated_uuidof<interface_name>() {                 \
-    static const IID _IID = __VA_ARGS__;                                       \
-    return _IID;                                                               \
-  }
-
-// TODO: Move DECLARE_CROSS_PLATFORM_UUIDOF_VALUE into INTERFACE_STRUCT_HEADER
-
 #define INTERFACE_STRUCT_HEADER(interface_name, uuid0, uuid1, uuid2, uuid3_0,  \
                                 uuid3_1, uuid3_2, uuid3_3, uuid3_4, uuid3_5,   \
                                 uuid3_6, uuid3_7)                              \
   struct interface_name;                                                       \
-  DECLARE_CROSS_PLATFORM_UUIDOF_VALUE(                                         \
-      interface_name, {0x##uuid0,                                              \
-                       0x##uuid1,                                              \
-                       0x##uuid2,                                              \
-                       {0x##uuid3_0, 0x##uuid3_1, 0x##uuid3_2, 0x##uuid3_3,    \
-                        0x##uuid3_4, 0x##uuid3_5, 0x##uuid3_6, 0x##uuid3_7}})  \
+  template <> inline IID __emulated_uuidof<interface_name>() {                 \
+    static const IID _IID = {0x##uuid0,                                        \
+                             0x##uuid1,                                        \
+                             0x##uuid2,                                        \
+                             {0x##uuid3_0, 0x##uuid3_1, 0x##uuid3_2,           \
+                              0x##uuid3_3, 0x##uuid3_4, 0x##uuid3_5,           \
+                              0x##uuid3_6, 0x##uuid3_7}};                      \
+    return _IID;                                                               \
+  }                                                                            \
   struct interface_name
 
 // TODO: We can also eat the open bracket and emit members containing the UUID.
