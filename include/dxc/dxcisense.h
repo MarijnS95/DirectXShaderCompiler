@@ -613,8 +613,7 @@ struct IDxcCodeCompleteResults;
 struct IDxcCompletionResult;
 struct IDxcCompletionString;
 
-INTERFACE_STRUCT_HEADER(IDxcCursor, 1467b985, 288d, 4d2a, 80, c1, ef,89,c4,2c,40,bc)
- : public IUnknown
+struct IDxcCursor : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetExtent(_Outptr_result_nullonfailure_ IDxcSourceRange** pRange) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetLocation(_Outptr_result_nullonfailure_ IDxcSourceLocation** pResult) = 0;
@@ -651,9 +650,9 @@ INTERFACE_STRUCT_HEADER(IDxcCursor, 1467b985, 288d, 4d2a, 80, c1, ef,89,c4,2c,40
   /// <summary>Gets the cursor following a location within a compound cursor.</summary>
   virtual HRESULT STDMETHODCALLTYPE GetSnappedChild(_In_ IDxcSourceLocation* location, _Outptr_result_maybenull_ IDxcCursor** pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcCursor, "1467b985-288d-4d2a-80c1-ef89c42c40bc")
 
-INTERFACE_STRUCT_HEADER(IDxcDiagnostic, 4f76b234, 3659, 4d33, 99, b0, 3b,0d,b9,94,b5,64)
- : public IUnknown
+struct IDxcDiagnostic : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE FormatDiagnostic(
     DxcDiagnosticDisplayOptions options,
@@ -668,26 +667,26 @@ INTERFACE_STRUCT_HEADER(IDxcDiagnostic, 4f76b234, 3659, 4d33, 99, b0, 3b,0d,b9,9
   virtual HRESULT STDMETHODCALLTYPE GetFixItAt(unsigned index,
     _Outptr_result_nullonfailure_ IDxcSourceRange** pReplacementRange, _Outptr_result_maybenull_ LPSTR* pText) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcDiagnostic, "4f76b234-3659-4d33-99b0-3b0db994b564")
 
-INTERFACE_STRUCT_HEADER(IDxcFile, bb2fca9e, 1478, 47ba, b0, 8c, 2c,50,2a,da,48,95)
- : public IUnknown
+struct IDxcFile : public IUnknown
 {
   /// <summary>Gets the file name for this file.</summary>
   virtual HRESULT STDMETHODCALLTYPE GetName(_Outptr_result_maybenull_ LPSTR* pResult) = 0;
   /// <summary>Checks whether this file is equal to the other specified file.</summary>
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcFile* other, _Out_ BOOL* pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcFile, "bb2fca9e-1478-47ba-b08c-2c502ada4895")
 
-INTERFACE_STRUCT_HEADER(IDxcInclusion, 0c364d65, df44, 4412, 88, 8e, 4e,55,2f,c5,e3,d6)
- : public IUnknown
+struct IDxcInclusion : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetIncludedFile(_Outptr_result_nullonfailure_ IDxcFile** pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStackLength(_Out_ unsigned *pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStackItem(unsigned index, _Outptr_result_nullonfailure_ IDxcSourceLocation **pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcInclusion, "0c364d65-df44-4412-888e-4e552fc5e3d6")
 
-INTERFACE_STRUCT_HEADER(IDxcIntelliSense, b1f99513, 46d6, 4112, 81, 69, dd,0d,60,53,f1,7d)
- : public IUnknown
+struct IDxcIntelliSense : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE CreateIndex(_Outptr_result_nullonfailure_ IDxcIndex** index) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetNullLocation(_Outptr_result_nullonfailure_ IDxcSourceLocation** location) = 0;
@@ -701,9 +700,9 @@ INTERFACE_STRUCT_HEADER(IDxcIntelliSense, b1f99513, 46d6, 4112, 81, 69, dd,0d,60
   virtual HRESULT STDMETHODCALLTYPE GetDefaultEditingTUOptions(_Out_ DxcTranslationUnitFlags* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE CreateUnsavedFile(_In_ LPCSTR fileName, _In_ LPCSTR contents, unsigned contentLength, _Outptr_result_nullonfailure_ IDxcUnsavedFile** pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcIntelliSense, "b1f99513-46d6-4112-8169-dd0d6053f17d")
 
-INTERFACE_STRUCT_HEADER(IDxcIndex, 937824a0, 7f5a, 4815, 9b, a7, 7f,c0,42,4f,41,73)
- : public IUnknown
+struct IDxcIndex : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE SetGlobalOptions(DxcGlobalOptions options) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetGlobalOptions(_Out_ DxcGlobalOptions* options) = 0;
@@ -716,9 +715,9 @@ INTERFACE_STRUCT_HEADER(IDxcIndex, 937824a0, 7f5a, 4815, 9b, a7, 7f,c0,42,4f,41,
       DxcTranslationUnitFlags options,
       _Out_ IDxcTranslationUnit** pTranslationUnit) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcIndex, "937824a0-7f5a-4815-9ba7-7fc0424f4173")
 
-INTERFACE_STRUCT_HEADER(IDxcSourceLocation, 8e7ddf1c, d7d3, 4d69, b2, 86, 85,fc,cb,a1,e0,cf)
- : public IUnknown
+struct IDxcSourceLocation : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcSourceLocation* other, _Out_ BOOL* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetSpellingLocation(
@@ -732,27 +731,27 @@ INTERFACE_STRUCT_HEADER(IDxcSourceLocation, 8e7ddf1c, d7d3, 4d69, b2, 86, 85,fc,
     _Out_opt_ unsigned* pLine,
     _Out_opt_ unsigned* pCol) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcSourceLocation, "8e7ddf1c-d7d3-4d69-b286-85fccba1e0cf")
 
-INTERFACE_STRUCT_HEADER(IDxcSourceRange, f1359b36, a53f, 4e81, b5, 14, b6,b8,41,22,a1,3f)
- : public IUnknown
+struct IDxcSourceRange : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE IsNull(_Out_ BOOL* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStart(_Out_ IDxcSourceLocation** pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetEnd(_Out_ IDxcSourceLocation** pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetOffsets(_Out_ unsigned* startOffset, _Out_ unsigned* endOffset) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcSourceRange, "f1359b36-a53f-4e81-b514-b6b84122a13f")
 
-INTERFACE_STRUCT_HEADER(IDxcToken, 7f90b9ff, a275, 4932, 97, d8, 3c,fd,23,44,82,a2)
- : public IUnknown
+struct IDxcToken : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetKind(_Out_ DxcTokenKind* pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetLocation(_Out_ IDxcSourceLocation** pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetExtent(_Out_ IDxcSourceRange** pValue) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetSpelling(_Out_ LPSTR* pValue) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcToken, "7f90b9ff-a275-4932-97d8-3cfd234482a2")
 
-INTERFACE_STRUCT_HEADER(IDxcTranslationUnit, 9677dee0, c0e5, 46a1, 8b, 40, 3d,b3,16,8b,e6,3d)
- : public IUnknown
+struct IDxcTranslationUnit : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetCursor(_Out_ IDxcCursor** pCursor) = 0;
   virtual HRESULT STDMETHODCALLTYPE Tokenize(
@@ -788,45 +787,46 @@ INTERFACE_STRUCT_HEADER(IDxcTranslationUnit, 9677dee0, c0e5, 46a1, 8b, 40, 3d,b3
       _In_ DxcCodeCompleteFlags options,
       _Outptr_result_nullonfailure_ IDxcCodeCompleteResults **pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcTranslationUnit, "9677dee0-c0e5-46a1-8b40-3db3168be63d")
 
-INTERFACE_STRUCT_HEADER(IDxcType, 2ec912fd, b144, 4a15, ad, 0d, 1c,54,39,c8,1e,46)
- : public IUnknown
+struct IDxcType : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetSpelling(_Outptr_result_z_ LPSTR* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE IsEqualTo(_In_ IDxcType* other, _Out_ BOOL* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetKind(_Out_ DxcTypeKind* pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcType, "2ec912fd-b144-4a15-ad0d-1c5439c81e46")
 
-INTERFACE_STRUCT_HEADER(IDxcUnsavedFile, 8ec00f98, 07d0, 4e60, 9d, 7c, 5a,50,b5,b0,01,7f)
- : public IUnknown
+struct IDxcUnsavedFile : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetFileName(_Outptr_result_z_ LPSTR* pFileName) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetContents(_Outptr_result_z_ LPSTR* pContents) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetLength(_Out_ unsigned* pLength) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcUnsavedFile, "8ec00f98-07d0-4e60-9d7c-5a50b5b0017f")
 
 
-INTERFACE_STRUCT_HEADER(IDxcCodeCompleteResults, 1E06466A, FD8B, 45F3, A7, 8F, 8A,3F,76,EB,B5,52)
- : public IUnknown
+struct IDxcCodeCompleteResults : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetNumResults(_Out_ unsigned* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetResultAt(unsigned index, _Outptr_result_nullonfailure_ IDxcCompletionResult** pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcCodeCompleteResults, "1E06466A-FD8B-45F3-A78F-8A3F76EBB552")
 
-INTERFACE_STRUCT_HEADER(IDxcCompletionResult, 943C0588, 22D0, 4784, 86, FC, 70,1F,80,2A,C2,B6)
- : public IUnknown
+struct IDxcCompletionResult : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetCursorKind(_Out_ DxcCursorKind* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetCompletionString(_Outptr_result_nullonfailure_ IDxcCompletionString** pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcCompletionResult, "943C0588-22D0-4784-86FC-701F802AC2B6")
 
-INTERFACE_STRUCT_HEADER(IDxcCompletionString, 06B51E0F, A605, 4C69, A1, 10, CD,6E,14,B5,8E,EC)
- : public IUnknown
+struct IDxcCompletionString : public IUnknown
 {
   virtual HRESULT STDMETHODCALLTYPE GetNumCompletionChunks(_Out_ unsigned* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetCompletionChunkKind(unsigned chunkNumber, _Out_ DxcCompletionChunkKind* pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetCompletionChunkText(unsigned chunkNumber, _Out_ LPSTR* pResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcCompletionString, "06B51E0F-A605-4C69-A110-CD6E14B58EEC")
 
 // Fun fact: 'extern' is required because const is by default static in C++, so
 // CLSID_DxcIntelliSense is not visible externally (this is OK in C, since const is

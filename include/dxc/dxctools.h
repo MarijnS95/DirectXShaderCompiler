@@ -22,8 +22,7 @@ enum RewriterOptionMask {
   KeepUserMacro = 8,
 };
 
-INTERFACE_STRUCT_HEADER(IDxcRewriter, c012115b,8893,4eb9, 9c,5a, 11,14,56,ea,1c,45)
- : public IUnknown {
+struct IDxcRewriter : public IUnknown {
 
   virtual HRESULT STDMETHODCALLTYPE RemoveUnusedGlobals(_In_ IDxcBlobEncoding *pSource,
                                                         _In_z_ LPCWSTR entryPoint,
@@ -47,6 +46,7 @@ INTERFACE_STRUCT_HEADER(IDxcRewriter, c012115b,8893,4eb9, 9c,5a, 11,14,56,ea,1c,
                                                      _In_ UINT32  rewriteOption,
                                                      _COM_Outptr_ IDxcOperationResult **ppResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcRewriter, "c012115b-8893-4eb9-9c5a-111456ea1c45")
 
 #ifdef _MSC_VER
 #define CLSID_SCOPE __declspec(selectany) extern
@@ -61,8 +61,7 @@ CLSID_SCOPE const CLSID
                          0x40b3,
                          {0x96, 0x8d, 0x93, 0xe1, 0x24, 0x73, 0x4d, 0xa4}};
 
-INTERFACE_STRUCT_HEADER(IDxcRewriter2, 261afca1,0609,4ec6, a7,7f, d9,8c,70,35,19,4e)
- : public IDxcRewriter {
+struct IDxcRewriter2 : public IDxcRewriter {
 
   virtual HRESULT STDMETHODCALLTYPE RewriteWithOptions(_In_ IDxcBlobEncoding *pSource,
                                                      // Optional file name for pSource. Used in errors and include handlers.
@@ -75,5 +74,6 @@ INTERFACE_STRUCT_HEADER(IDxcRewriter2, 261afca1,0609,4ec6, a7,7f, d9,8c,70,35,19
                                                      _In_opt_ IDxcIncludeHandler *pIncludeHandler,
                                                      _COM_Outptr_ IDxcOperationResult **ppResult) = 0;
 };
+CROSS_PLATFORM_UUIDOF(IDxcRewriter2, "261afca1-0609-4ec6-a77f-d98c7035194e")
 
 #endif
