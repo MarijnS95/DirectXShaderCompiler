@@ -126,6 +126,7 @@ struct HLSL_INTRINSIC {
 
 ///////////////////////////////////////////////////////////////////////////////
 // Interfaces.
+CROSS_PLATFORM_UUIDOF(IDxcIntrinsicTable, "f0d4da3f-f863-4660-b8b4-dfd94ded6215")
 struct IDxcIntrinsicTable : public IUnknown
 {
 public:
@@ -151,15 +152,15 @@ public:
   // Returns the dxil opcode that the intrinsic should use for lowering.
   virtual HRESULT STDMETHODCALLTYPE GetDxilOpCode(UINT opcode, UINT *pDxilOpcode) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcIntrinsicTable, "f0d4da3f-f863-4660-b8b4-dfd94ded6215")
 
+CROSS_PLATFORM_UUIDOF(IDxcSemanticDefineValidator, "1d063e4f-515a-4d57-a12a-431f6a44cfb9")
 struct IDxcSemanticDefineValidator : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE GetSemanticDefineWarningsAndErrors(LPCSTR pName, LPCSTR pValue, IDxcBlobEncoding **ppWarningBlob, IDxcBlobEncoding **ppErrorBlob) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcSemanticDefineValidator, "1d063e4f-515a-4d57-a12a-431f6a44cfb9")
 
+CROSS_PLATFORM_UUIDOF(IDxcLangExtensions, "282a56b4-3f56-4360-98c7-9ea04a752272")
 struct IDxcLangExtensions : public IUnknown
 {
 public:
@@ -181,14 +182,14 @@ public:
   /// <summary>Sets the name for the root metadata node used in DXIL to hold the semantic defines.</summary>
   virtual HRESULT STDMETHODCALLTYPE SetSemanticDefineMetaDataName(LPCSTR name) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcLangExtensions, "282a56b4-3f56-4360-98c7-9ea04a752272")
 
+CROSS_PLATFORM_UUIDOF(IDxcLangExtensions2, "2490C368-89EE-4491-A4B2-C6547B6C9381")
 struct IDxcLangExtensions2 : public IDxcLangExtensions {
 public:
   virtual HRESULT STDMETHODCALLTYPE SetTargetTriple(LPCSTR name) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcLangExtensions2, "2490C368-89EE-4491-A4B2-C6547B6C9381")
 
+CROSS_PLATFORM_UUIDOF(IDxcSystemAccess, "454b764f-3549-475b-958c-a7a6fcd05fbc")
 struct IDxcSystemAccess : public IUnknown
 {
 public:
@@ -232,20 +233,19 @@ public:
   virtual HRESULT STDMETHODCALLTYPE OpenStdStorage(int standardFD, _Outptr_ IUnknown** pResult) = 0;
   virtual HRESULT STDMETHODCALLTYPE GetStreamDisplay(_COM_Outptr_result_maybenull_ ITextFont** textFont, _Out_ unsigned* columnCount) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcSystemAccess, "454b764f-3549-475b-958c-a7a6fcd05fbc")
 
+CROSS_PLATFORM_UUIDOF(IDxcContainerEventsHandler, "e991ca8d-2045-413c-a8b8-788b2c06e14d")
 struct IDxcContainerEventsHandler : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE OnDxilContainerBuilt(_In_ IDxcBlob *pSource, _Out_ IDxcBlob **ppTarget) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcContainerEventsHandler, "e991ca8d-2045-413c-a8b8-788b2c06e14d")
 
+CROSS_PLATFORM_UUIDOF(IDxcContainerEvent, "0cfc5058-342b-4ff2-83f7-04c12aad3d01")
 struct IDxcContainerEvent : public IUnknown
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE RegisterDxilContainerEventHandler(IDxcContainerEventsHandler *pHandler, UINT64 *pCookie) = 0;
   virtual HRESULT STDMETHODCALLTYPE UnRegisterDxilContainerEventHandler(UINT64 cookie) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcContainerEvent, "0cfc5058-342b-4ff2-83f7-04c12aad3d01")
 #endif

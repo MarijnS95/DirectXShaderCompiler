@@ -22,6 +22,7 @@ enum RewriterOptionMask {
   KeepUserMacro = 8,
 };
 
+CROSS_PLATFORM_UUIDOF(IDxcRewriter, "c012115b-8893-4eb9-9c5a-111456ea1c45")
 struct IDxcRewriter : public IUnknown {
 
   virtual HRESULT STDMETHODCALLTYPE RemoveUnusedGlobals(_In_ IDxcBlobEncoding *pSource,
@@ -46,7 +47,6 @@ struct IDxcRewriter : public IUnknown {
                                                      _In_ UINT32  rewriteOption,
                                                      _COM_Outptr_ IDxcOperationResult **ppResult) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcRewriter, "c012115b-8893-4eb9-9c5a-111456ea1c45")
 
 #ifdef _MSC_VER
 #define CLSID_SCOPE __declspec(selectany) extern
@@ -61,6 +61,7 @@ CLSID_SCOPE const CLSID
                          0x40b3,
                          {0x96, 0x8d, 0x93, 0xe1, 0x24, 0x73, 0x4d, 0xa4}};
 
+CROSS_PLATFORM_UUIDOF(IDxcRewriter2, "261afca1-0609-4ec6-a77f-d98c7035194e")
 struct IDxcRewriter2 : public IDxcRewriter {
 
   virtual HRESULT STDMETHODCALLTYPE RewriteWithOptions(_In_ IDxcBlobEncoding *pSource,
@@ -74,6 +75,5 @@ struct IDxcRewriter2 : public IDxcRewriter {
                                                      _In_opt_ IDxcIncludeHandler *pIncludeHandler,
                                                      _COM_Outptr_ IDxcOperationResult **ppResult) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IDxcRewriter2, "261afca1-0609-4ec6-a77f-d98c7035194e")
 
 #endif

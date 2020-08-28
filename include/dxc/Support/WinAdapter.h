@@ -631,6 +631,7 @@ template <typename T> inline void **IID_PPV_ARGS_Helper(T **pp) {
 
 //===--------------------- COM Interfaces ---------------------------------===//
 
+CROSS_PLATFORM_UUIDOF(IUnknown, "00000000-0000-0000-C000-000000000046")
 struct IUnknown {
   IUnknown() : m_count(0) {};
   virtual HRESULT QueryInterface(REFIID riid, void **ppvObject) = 0;
@@ -644,25 +645,25 @@ struct IUnknown {
 private:
   std::atomic<unsigned long> m_count;
 };
-CROSS_PLATFORM_UUIDOF(IUnknown, "00000000-0000-0000-C000-000000000046")
 
-struct INoMarshal : public IUnknown {};
 CROSS_PLATFORM_UUIDOF(INoMarshal, "ECC8691B-C1DB-4DC0-855E-65F6C551AF49")
+struct INoMarshal : public IUnknown {};
 
+CROSS_PLATFORM_UUIDOF(IMalloc, "00000002-0000-0000-C000-000000000046")
 struct IMalloc : public IUnknown {
   virtual void *Alloc(size_t size);
   virtual void *Realloc(void *ptr, size_t size);
   virtual void Free(void *ptr);
   virtual HRESULT QueryInterface(REFIID riid, void **ppvObject);
 };
-CROSS_PLATFORM_UUIDOF(IMalloc, "00000002-0000-0000-C000-000000000046")
 
+CROSS_PLATFORM_UUIDOF(ISequentialStream, "0C733A30-2A1C-11CE-ADE5-00AA0044773D")
 struct ISequentialStream : public IUnknown {
   virtual HRESULT Read(void *pv, ULONG cb, ULONG *pcbRead) = 0;
   virtual HRESULT Write(const void *pv, ULONG cb, ULONG *pcbWritten) = 0;
 };
-CROSS_PLATFORM_UUIDOF(ISequentialStream, "0C733A30-2A1C-11CE-ADE5-00AA0044773D")
 
+CROSS_PLATFORM_UUIDOF(IStream, "0000000c-0000-0000-C000-000000000046")
 struct IStream : public ISequentialStream {
   virtual HRESULT Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin,
                        ULARGE_INTEGER *plibNewPosition) = 0;
@@ -685,7 +686,6 @@ struct IStream : public ISequentialStream {
 
   virtual HRESULT Clone(IStream **ppstm) = 0;
 };
-CROSS_PLATFORM_UUIDOF(IStream, "0000000c-0000-0000-C000-000000000046")
 
 //===--------------------- COM Pointer Types ------------------------------===//
 
