@@ -607,6 +607,7 @@ constexpr GUID guid_from_string(const char str[37]) {
 template <typename interface> inline GUID __emulated_uuidof();
 
 #define CROSS_PLATFORM_UUIDOF(interface, spec)                                 \
+  struct interface;                                                            \
   template <> inline GUID __emulated_uuidof<interface>() {                     \
     static const IID _IID = guid_from_string(spec);                            \
     return _IID;                                                               \
