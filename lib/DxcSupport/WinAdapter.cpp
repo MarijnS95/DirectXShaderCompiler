@@ -16,16 +16,16 @@
 
 #ifdef __EMULATE_UUID
 
-size_t UuidStrHash(const char* k) {
-    long h = 0;
-    while (*k) {
-        h = (h << 4) + *(k++);
-        long g = h & 0xF0000000L;
-        if (g != 0)
-            h ^= g >> 24;
-        h &= ~g;
-    }
-    return h;
+size_t UuidStrHash(const char *k) {
+  long h = 0;
+  while (*k) {
+    h = (h << 4) + *(k++);
+    long g = h & 0xF0000000L;
+    if (g != 0)
+      h ^= g >> 24;
+    h &= ~g;
+  }
+  return h;
 }
 
 #endif // __EMULATE_UUID
@@ -96,6 +96,17 @@ DXC_API_IMPORT BSTR __stdcall SysAllocStringLen(const OLECHAR *strIn, UINT ui) {
   strOut[ui] = 0;
 
   return strOut;
+}
+
+DXC_API_IMPORT UINT __stdcall SysStringByteLen(BSTR bstr) {
+  if (!bstr)
+    return 0;
+
+  return ((UINT *)bstr)[-1];
+}
+
+DXC_API_IMPORT UINT __stdcall SysStringLen(BSTR pbstr) {
+  return SysStringByteLen(pbstr) / 4;
 }
 
 //===---------------------- Char converstion ------------------------------===//
