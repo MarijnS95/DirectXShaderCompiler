@@ -222,6 +222,10 @@
 #define UInt32Add UIntAdd
 #define Int32ToUInt32 IntToUInt
 
+#ifndef DXC_API_IMPORT
+#define DXC_API_IMPORT __attribute__((visibility("default")))
+#endif
+
 //===--------------------- HRESULT Related Macros -------------------------===//
 
 #define S_OK ((HRESULT)0L)
@@ -433,7 +437,7 @@ typedef void *HMODULE;
 
 #ifdef __EMULATE_UUID
 struct GUID
-#else  // __EMULATE_UUID
+#else // __EMULATE_UUID
 // These specific definitions are required by clang -fms-extensions.
 typedef struct _GUID
 #endif // __EMULATE_UUID
@@ -445,7 +449,7 @@ typedef struct _GUID
 }
 #ifdef __EMULATE_UUID
 ;
-#else  // __EMULATE_UUID
+#else // __EMULATE_UUID
 GUID;
 #endif // __EMULATE_UUID
 typedef GUID CLSID;
@@ -456,7 +460,7 @@ typedef const GUID &REFCLSID;
 typedef const void *REFIID;
 #define IsEqualIID(a, b) a == b
 #define IsEqualCLSID(a, b) !memcmp(&a, &b, sizeof(GUID))
-#else  // __EMULATE_UUID
+#else // __EMULATE_UUID
 typedef GUID IID;
 typedef IID *LPIID;
 typedef const IID &REFIID;
@@ -559,7 +563,7 @@ enum tagSTATFLAG {
 
 #ifdef __EMULATE_UUID
 
-size_t UuidStrHash(const char* k);
+size_t UuidStrHash(const char *k);
 
 // The following macros are defined to facilitate the lack of 'uuid' on Linux.
 #define DECLARE_CROSS_PLATFORM_UUIDOF(T)                                       \
@@ -914,9 +918,10 @@ public:
 
 //===--------------------------- BSTR Allocation --------------------------===//
 
-void SysFreeString(BSTR bstrString);
+extern "C" DXC_API_IMPORT void __stdcall SysFreeString(BSTR bstrString);
 // Allocate string with length prefix
-BSTR SysAllocStringLen(const OLECHAR *strIn, UINT ui);
+extern "C" DXC_API_IMPORT BSTR __stdcall SysAllocStringLen(const OLECHAR *strIn,
+                                                           UINT ui);
 
 //===--------------------- UTF-8 Related Types ----------------------------===//
 

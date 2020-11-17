@@ -9,13 +9,15 @@
 //                                                                           //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "dxc/Support/WinIncludes.h"
-
+#ifndef DXC_API_IMPORT
 #ifdef _WIN32
 #define DXC_API_IMPORT __declspec(dllexport)
 #else
 #define DXC_API_IMPORT __attribute__ ((visibility ("default")))
 #endif
+#endif
+
+#include "dxc/Support/WinIncludes.h"
 
 #include "dxc/dxcisense.h"
 #include "dxc/dxctools.h"
@@ -83,7 +85,7 @@ HRESULT CreateDxcContainerReflection(_In_ REFIID riid, _Out_ LPVOID *ppv) {
 }
 
 HRESULT CreateDxcContainerBuilder(_In_ REFIID riid, _Out_ LPVOID *ppv) {
-  // Call dxil.dll's containerbuilder 
+  // Call dxil.dll's containerbuilder
   *ppv = nullptr;
   const char *warning;
   HRESULT hr = DxilLibCreateInstance(CLSID_DxcContainerBuilder, (IDxcContainerBuilder**)ppv);
