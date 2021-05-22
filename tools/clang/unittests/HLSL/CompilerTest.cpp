@@ -76,7 +76,7 @@ static bool LooksLikeDir(std::wstring fileName) {
   return false;
 }
 
-class TestIncludeHandler : public IDxcIncludeHandler {
+class TestIncludeHandler final : public IDxcIncludeHandler {
   DXC_MICROCOM_REF_FIELD(m_dwRef)
 public:
   DXC_MICROCOM_ADDREF_RELEASE_IMPL(m_dwRef)
