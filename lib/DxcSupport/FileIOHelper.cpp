@@ -38,6 +38,8 @@
 #define CP_UTF16 CP_UTF16LE
 
 struct HeapMalloc final : public IMalloc {
+  // Stateless class, see the comment in GetGlobalHeapMalloc
+  // about adding members.
 public:
   ULONG STDMETHODCALLTYPE AddRef() override { return 1; }
   ULONG STDMETHODCALLTYPE Release() override { return 1; }
@@ -88,7 +90,11 @@ static HeapMalloc g_HeapMalloc;
 namespace hlsl {
 
 IMalloc *GetGlobalHeapMalloc() throw() {
-  return &g_HeapMalloc;
+  // Placement-new to initialize the vtable pointer.
+  // HeapMalloc is stateless (does not hold any members) and is safe
+  // to be reinitialized unconditionally. If members are added this
+  // should only be called once, when the vptr is NULL.
+  return new (&g_HeapMalloc) HeapMalloc;
 }
 
 _Use_decl_annotations_

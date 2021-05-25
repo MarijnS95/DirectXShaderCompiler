@@ -156,6 +156,9 @@ unsigned char _BitScanForward(unsigned long * Index, unsigned long Mask) {
 }
 
 struct CoMalloc final : public IMalloc {
+  // Stateless class, see the comment in CoGetMalloc
+  // about adding members.
+
   ULONG STDMETHODCALLTYPE AddRef() override { return 1; }
   ULONG STDMETHODCALLTYPE Release() override { return 1; }
   STDMETHODIMP QueryInterface(REFIID riid, void **ppvObject) override {
@@ -174,7 +177,11 @@ struct CoMalloc final : public IMalloc {
 static CoMalloc g_CoMalloc;
 
 HRESULT CoGetMalloc(DWORD dwMemContext, IMalloc **ppMalloc) {
-  *ppMalloc = &g_CoMalloc;
+  // Placement-new to initialize the vtable pointer.
+  // CoMalloc is stateless (does not hold any members) and is safe
+  // to be reinitialized unconditionally. If members are added this
+  // should only be called once, when the vptr is NULL.
+  *ppMalloc = new (&g_CoMalloc) CoMalloc;
   return S_OK;
 }
 

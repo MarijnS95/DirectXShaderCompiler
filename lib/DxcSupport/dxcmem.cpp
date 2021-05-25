@@ -24,7 +24,7 @@ static llvm::sys::ThreadLocal<IMalloc> *g_ThreadMallocTls;
 static IMalloc *g_pDefaultMalloc;
 
 HRESULT DxcInitThreadMalloc() throw() {
-  hlsl::GetGlobalHeapMalloc()->Alloc(10);
+  // hlsl::GetGlobalHeapMalloc()->Alloc(10);
 
   // Allow a default malloc from a previous call to Init.
   // This will not be cleaned up in the call to Cleanup because
