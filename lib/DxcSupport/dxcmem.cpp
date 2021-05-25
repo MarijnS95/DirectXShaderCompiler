@@ -16,6 +16,7 @@
 
 #include "dxc/Support/WinIncludes.h"
 #include "dxc/Support/WinFunctions.h"
+#include "dxc/Support/FileIOHelper.h"
 #include "llvm/Support/ThreadLocal.h"
 #include <memory>
 
@@ -23,6 +24,8 @@ static llvm::sys::ThreadLocal<IMalloc> *g_ThreadMallocTls;
 static IMalloc *g_pDefaultMalloc;
 
 HRESULT DxcInitThreadMalloc() throw() {
+  hlsl::GetGlobalHeapMalloc()->Alloc(10);
+
   // Allow a default malloc from a previous call to Init.
   // This will not be cleaned up in the call to Cleanup because
   // it can still be referenced after Cleanup is called.

@@ -156,9 +156,8 @@ unsigned char _BitScanForward(unsigned long * Index, unsigned long Mask) {
 }
 
 struct CoMalloc final : public IMalloc {
-  CoMalloc() : m_dwRef(0) {};
-
-  DXC_MICROCOM_ADDREF_RELEASE_IMPL(m_dwRef)
+  ULONG STDMETHODCALLTYPE AddRef() override { return 1; }
+  ULONG STDMETHODCALLTYPE Release() override { return 1; }
   STDMETHODIMP QueryInterface(REFIID riid, void **ppvObject) override {
     assert(false && "QueryInterface not implemented for CoMalloc.");
     return E_NOINTERFACE;
@@ -170,14 +169,12 @@ struct CoMalloc final : public IMalloc {
   size_t STDMETHODCALLTYPE GetSize(void *pv) override { return -1; }
   int STDMETHODCALLTYPE DidAlloc(void *pv) override { return -1; }
   void STDMETHODCALLTYPE HeapMinimize(void) override {}
-
-private:
-  DXC_MICROCOM_REF_FIELD(m_dwRef)
 };
 
+static CoMalloc g_CoMalloc;
+
 HRESULT CoGetMalloc(DWORD dwMemContext, IMalloc **ppMalloc) {
-  *ppMalloc = new CoMalloc;
-  (*ppMalloc)->AddRef();
+  *ppMalloc = &g_CoMalloc;
   return S_OK;
 }
 
